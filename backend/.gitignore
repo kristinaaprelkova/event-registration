@@ -1,5 +1,5 @@
 build/HELP.md
-../.gradle
+.gradle
 build/
 !backend/src/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
