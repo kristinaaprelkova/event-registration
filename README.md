@@ -76,6 +76,13 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
 
+```admin login
+{
+"email": "admin@example.com",
+"password": "admin123"
+}
+
+```
 ---
 
 ### 4. Run backend
@@ -114,17 +121,12 @@ http://localhost:5173
 ```
 event-registration/
 ├── backend/   # Spring Boot application
-├── frontend/  # Vue application (in progress)
+├── frontend/  # Vue application 
 ```
 
 ---
 
-## 📄 Notes
 
-* Frontend part is under development
-* This project is created as a practical assignment
-
----
 
 ## 👩‍💻 Author
 
