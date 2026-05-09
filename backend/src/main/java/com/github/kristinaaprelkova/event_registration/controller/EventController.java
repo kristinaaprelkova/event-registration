@@ -24,7 +24,14 @@ public class EventController {
 
     // POST /api/events
     @PostMapping
-    public Event createEvent(@RequestBody Event event) {
+    public Event createEvent(
+            @RequestHeader(value = "X-ADMIN", required = false) String isAdmin,
+            @RequestBody Event event
+    ) {
+        if (!"true".equals(isAdmin)) {
+            throw new RuntimeException("Only admin can create events");
+        }
+
         return eventRepository.save(event);
     }
 }
