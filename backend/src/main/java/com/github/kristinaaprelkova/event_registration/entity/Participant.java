@@ -1,6 +1,7 @@
 package com.github.kristinaaprelkova.event_registration.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "participants")
@@ -10,9 +11,14 @@ public class Participant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @NotBlank
+    private String firstName;
 
-    private String email;
+    @NotBlank
+    private String lastName;
+
+    @NotBlank
+    private String personalCode;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
@@ -21,9 +27,10 @@ public class Participant {
     public Participant() {
     }
 
-    public Participant(String name, String email, Event event) {
-        this.name = name;
-        this.email = email;
+    public Participant(String firstName, String lastName, String personalCode, Event event) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.personalCode = personalCode;
         this.event = event;
     }
 
@@ -31,24 +38,32 @@ public class Participant {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPersonalCode() {
+        return personalCode;
     }
 
     public Event getEvent() {
         return event;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPersonalCode(String personalCode) {
+        this.personalCode = personalCode;
     }
 
     public void setEvent(Event event) {
