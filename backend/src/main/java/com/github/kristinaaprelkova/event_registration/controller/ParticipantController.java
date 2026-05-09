@@ -27,6 +27,12 @@ public class ParticipantController {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
 
+        long participantCount = participantRepository.countByEventId(eventId);
+
+        if (participantCount >= event.getMaxParticipants()) {
+            throw new RuntimeException("Event is full");
+        }
+
         participant.setEvent(event);
 
         return participantRepository.save(participant);
